@@ -8,8 +8,24 @@ const navigaateTo = (url)=>{
 const router = async () => {
   
     const routes =[
-        {path:'/',view: ()=>console.log('home')},
-        {path:'/error',view: ()=>console.log('error')}
+        {path:'/',view: ()=>{
+            document.getElementById('info').innerHTML=`
+            <div class="flex justify-center text-center">
+                <h1 class="text-6xl font-extrabold">Al-Quran SPA</h1>
+                
+                </div>
+                <div class="text-center mt-16">
+                <p class="text-xl">Al-Quran SPA is simple and basic Quran with English translation</p>
+                </div>
+            `;
+        }},
+        {path:'/error',view: ()=>{
+            document.getElementById('info').innerHTML=`
+            <div class="flex justify-center text-center">
+                <h1 class="text-6xl font-extrabold">OOOPS! Page not Found.</h1>
+                </div>
+            `;
+        }}
 
     ];
     for(let names of name){
