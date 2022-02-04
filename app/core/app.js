@@ -18,6 +18,7 @@ const router = async () => {
                 <p class="text-xl">Al-Quran SPA is simple and basic Quran with English translation</p>
                 </div>
             `;
+            document.getElementById('content').innerHTML='';
         }},
         {path:'/error',view: ()=>{
             document.getElementById('info').innerHTML=`
