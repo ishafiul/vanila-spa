@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "scripts": {
+    "watch": "npx tailwindcss -i ./resource/css/tailwind.css -o ./app/core/asset/css/app.css --watch",
+    "live": "node server.js "
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.0.18"
+  }
+}
