@@ -1,10 +1,14 @@
 import { full } from "./db/arabic.js";
 import { en } from "./db/english.js";
 import { name } from "./db/name.js";
+
+//
 const navigaateTo = (url)=>{
     history.pushState(null,null, url);
     router();
 }
+
+
 const router = async () => {
   
     const routes =[
@@ -48,7 +52,7 @@ const router = async () => {
             document.getElementById('info').innerHTML=`
                 <div class="flex justify-center text-center">
                 <div class="space-y-2">
-                <h1 class="text-6xl font-extrabold">${names.name}</h1>
+                <h1 class="text-6xl font-extrabold" dir="rtl">${names.name}</h1>
                 <h2 class="text-4xl font-extrabold">${names.englishName}</h2>
                 <h3 class="text-2xl font-bold">${names.englishNameTranslation}</h3>
                 <h4 class="text-xl">(${names.revelationType})</h4>
@@ -58,6 +62,8 @@ const router = async () => {
             document.getElementById('content').innerHTML=arabic;
             //console.log();
             document.title=names.englishName;
+            localStorage.setItem('location', names.englishName);
+            
         }
     });
     }
@@ -69,7 +75,9 @@ const router = async () => {
     });
     
     let match = matchRoutes.find(matchRoute =>matchRoute.isMatach)
-
+    if(match){
+        console.log(localStorage.location)
+    }
     if(!match){
         match ={
             route: routes[1],
@@ -78,11 +86,25 @@ const router = async () => {
     }
     match.route.view()
 };
+
+//popsate
 window.addEventListener("popstate",router);
+
+//prevent default act of a nav link
 document.addEventListener("DOMContentLoaded",()=>{
+    if( localStorage.location !==''){
+        if(location.pathname =='/'+ localStorage.location){
+        localStorage.setItem('location', '');
+        }
+        window.location.href ='/'+localStorage.location;
+        localStorage.setItem('location', '');
+    }
+    
     document.body.addEventListener("click", e=>{
+       
         if(e.target.matches("[data-link]")){
             e.preventDefault();
+            //localStorage.setItem('location', 'ff');
             navigaateTo(e.target.href)
         }
     })
@@ -90,6 +112,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     router();
     
 });
+
+
+//genarete nav links
  let navs ='';
 
 for(let nav of name){
