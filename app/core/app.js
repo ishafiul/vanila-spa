@@ -107,13 +107,14 @@ window.addEventListener("popstate",router);
 //prevent default act of a nav link
 document.addEventListener("DOMContentLoaded",()=>{
     if( localStorage.location !== ''){
-        if(location.pathname === '/'+ localStorage.location+'#'+localStorage.ayah){
-        localStorage.setItem('location', '');
+        if(location.pathname === '/'+ localStorage.location){
+            localStorage.setItem('location', '');
         }
         else{
-            window.location.href ='/'+localStorage.location+'#'+localStorage.ayah;
-       
-        localStorage.setItem('location', '');
+            if(localStorage.location && localStorage.ayah){
+                window.location.href ='/'+localStorage.location+'#'+localStorage.ayah;
+            }
+            localStorage.setItem('location', '');
         }
     }
     
