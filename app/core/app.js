@@ -39,8 +39,8 @@ const router = async () => {
             let i=0;
             for(let ayah of full.data.surahs[names.number-1].ayahs){
                 arabic +=`
-                <div class="flex items-center gap-4" dir="rtl">
-                <div class="bg-slate-500 h-14 w-14 rounded-full flex justify-center items-center text-2xl text-white">${ayah.number}</div>
+                <div class="flex items-center gap-4 ayah" dir="rtl" id="${ayah.number}">
+                <div  class="bg-slate-500 h-14 w-14 rounded-full flex justify-center items-center text-2xl text-white">${ayah.number}</div>
                 <div class="space-y-4">
                 <p>${ayah.text}</p>
                 <p class="text-2xl text-center" dir="ltr">${en.data.surahs[names.number-1].ayahs[i].text}</p>
@@ -60,9 +60,26 @@ const router = async () => {
                 </div>
             `;
             document.getElementById('content').innerHTML=arabic;
+             document.getElementById('contentholder').scrollTo(0, 0);
             //console.log();
             document.title=names.englishName;
             localStorage.setItem('location', names.englishName);
+
+             const contentDiv = document.querySelectorAll('.ayah')
+            const optons={
+                rootMargin: "0px 0px -600px 0px"
+            };
+            const observer = new IntersectionObserver((entrys,observer)=>{
+                entrys.forEach(entry=>{
+                    localStorage.setItem('ayah', entry.target.id);
+                    //console.log(entry.target.id);
+                })
+            },optons);
+
+            contentDiv.forEach(ayah=>{
+                observer.observe(ayah);
+            })
+            
             
         }
     });
@@ -75,9 +92,6 @@ const router = async () => {
     });
     
     let match = matchRoutes.find(matchRoute =>matchRoute.isMatach)
-    if(match){
-        console.log(localStorage.location)
-    }
     if(!match){
         match ={
             route: routes[1],
@@ -92,19 +106,21 @@ window.addEventListener("popstate",router);
 
 //prevent default act of a nav link
 document.addEventListener("DOMContentLoaded",()=>{
-    if( localStorage.location !==''){
-        if(location.pathname =='/'+ localStorage.location){
+    if( localStorage.location !== ''){
+        if(location.pathname === '/'+ localStorage.location+'#'+localStorage.ayah){
         localStorage.setItem('location', '');
         }
-        window.location.href ='/'+localStorage.location;
+        else{
+            window.location.href ='/'+localStorage.location+'#'+localStorage.ayah;
+       
         localStorage.setItem('location', '');
+        }
     }
     
     document.body.addEventListener("click", e=>{
        
         if(e.target.matches("[data-link]")){
             e.preventDefault();
-            //localStorage.setItem('location', 'ff');
             navigaateTo(e.target.href)
         }
     })
