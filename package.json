@@ -1,8 +1,5 @@
 {
-  "dependencies": {
-    "express": "^4.17.2",
-    "node-fetch": "^3.2.0"
-  },
+  "dependencies": {},
   "scripts": {
     "watch": "npx tailwindcss -i ./resource/css/tailwind.css -o ./app/core/asset/css/app.css --watch",
     "live": "node server.js "

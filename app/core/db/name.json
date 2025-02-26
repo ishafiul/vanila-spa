@@ -1,3 +1,72 @@
 [
-  
+  {
+    "number": 1,
+    "name": "الفاتحة",
+    "englishName": "Al-Fatiha",
+    "englishNameTranslation": "The Opening",
+    "revelationType": "Meccan"
+  },
+  {
+    "number": 2,
+    "name": "البقرة",
+    "englishName": "Al-Baqarah",
+    "englishNameTranslation": "The Cow",
+    "revelationType": "Medinan"
+  },
+  {
+    "number": 3,
+    "name": "آل عمران",
+    "englishName": "Aal-Imran",
+    "englishNameTranslation": "The Family of Imran",
+    "revelationType": "Medinan"
+  },
+  {
+    "number": 4,
+    "name": "النساء",
+    "englishName": "An-Nisa",
+    "englishNameTranslation": "The Women",
+    "revelationType": "Medinan"
+  },
+  {
+    "number": 5,
+    "name": "المائدة",
+    "englishName": "Al-Ma'idah",
+    "englishNameTranslation": "The Table Spread",
+    "revelationType": "Medinan"
+  },
+  {
+    "number": 6,
+    "name": "الأنعام",
+    "englishName": "Al-An'am",
+    "englishNameTranslation": "The Cattle",
+    "revelationType": "Meccan"
+  },
+  {
+    "number": 7,
+    "name": "الأعراف",
+    "englishName": "Al-A'raf",
+    "englishNameTranslation": "The Heights",
+    "revelationType": "Meccan"
+  },
+  {
+    "number": 8,
+    "name": "الأنفال",
+    "englishName": "Al-Anfal",
+    "englishNameTranslation": "The Spoils of War",
+    "revelationType": "Medinan"
+  },
+  {
+    "number": 9,
+    "name": "التوبة",
+    "englishName": "At-Tawbah",
+    "englishNameTranslation": "The Repentance",
+    "revelationType": "Medinan"
+  },
+  {
+    "number": 10,
+    "name": "يونس",
+    "englishName": "Yunus",
+    "englishNameTranslation": "Jonah",
+    "revelationType": "Meccan"
+  }
 ]
